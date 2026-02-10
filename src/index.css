@@ -28,14 +28,21 @@
   }
 
   body {
-    background-color: #0a0a0a;
+    background: linear-gradient(
+      to bottom,
+      #0d1b2a 0%,
+      #1b263b 50%,
+      #0d1b2a 100%
+    );
+    background-attachment: fixed;
     color: #00ff41;
     font-family: "IBM Plex Mono", "Courier New", monospace;
+    min-height: 100vh;
   }
 
   html {
     scroll-behavior: smooth;
-    background: #0a0a0a;
+    background: #0d1b2a;
   }
 
   ::-webkit-scrollbar {
@@ -43,11 +50,12 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #000;
+    background: #0d1b2a;
   }
 
   ::-webkit-scrollbar-thumb {
     background: #00ff41;
+    border: 2px solid #0d1b2a;
   }
 
   ::-webkit-scrollbar-thumb:hover {
