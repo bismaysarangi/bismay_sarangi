@@ -1,14 +1,9 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Moon, Sun, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-interface NavbarProps {
-  darkMode: boolean;
-  setDarkMode: (value: boolean) => void;
-}
-
-export function Navbar({ darkMode, setDarkMode }: NavbarProps) {
+export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -63,11 +58,8 @@ export function Navbar({ darkMode, setDarkMode }: NavbarProps) {
             <Button
               variant="ghost"
               size="icon"
-              onClick={() => setDarkMode(!darkMode)}
               className="text-gray-300 hover:text-[#00f3ff]"
-            >
-              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-            </Button>
+            ></Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -75,11 +67,8 @@ export function Navbar({ darkMode, setDarkMode }: NavbarProps) {
             <Button
               variant="ghost"
               size="icon"
-              onClick={() => setDarkMode(!darkMode)}
               className="text-gray-300 hover:text-[#00f3ff]"
-            >
-              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-            </Button>
+            ></Button>
             <Button
               variant="ghost"
               size="icon"

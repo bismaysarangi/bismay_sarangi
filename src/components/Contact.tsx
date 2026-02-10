@@ -173,10 +173,10 @@ export function Contact() {
           >
             <p>Or reach out directly at:</p>
             <a
-              href="mailto:bismaysarangi@example.com"
+              href="mailto:bismaysarangi@gmail.com"
               className="text-[#00f3ff] hover:text-[#00ff41] transition-colors"
             >
-              bismaysarangi@example.com
+              bismaysarangi@gmail.com
             </a>
           </motion.div>
         </motion.div>

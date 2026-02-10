@@ -138,7 +138,7 @@ export function Hero() {
               <Twitter size={28} />
             </a>
             <a
-              href="#contact"
+              href="mailto:bismaysarangi@gmail.com"
               className="text-gray-400 hover:text-[#00f3ff] transition-colors"
             >
               <Mail size={28} />

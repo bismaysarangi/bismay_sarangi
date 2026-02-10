@@ -32,7 +32,7 @@ export function Footer() {
               <Twitter size={24} />
             </a>
             <a
-              href="#contact"
+              href="mailto:bismaysarangi@gmail.com"
               className="text-gray-400 hover:text-[#00f3ff] transition-colors"
             >
               <Mail size={24} />
@@ -49,8 +49,8 @@ export function Footer() {
           </div>
 
           {/* Terminal-style signature */}
-          <div className="font-mono text-xs text-gray-600">
-            {">"} console.log("Thanks for visiting! 🚀")
+          <div className="font-mono text-xs text-gray-400">
+            {">"} console.log("Thanks for visiting!")
           </div>
         </div>
       </div>
