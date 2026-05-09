@@ -14,7 +14,6 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close menu on resize to desktop
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) setIsOpen(false);
@@ -31,10 +30,12 @@ export function Navbar() {
   ];
 
   const handleNavClick = (href: string) => {
-  const id = href.replace("#", "");
-  const el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior:         "smooth" });
-  setTimeout(() => setIsOpen(false), 10);
+    setIsOpen(false);
+    const id = href.replace("#", "");
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }, 300); // wait for menu close animation to finish
   };
 
   return (
@@ -117,13 +118,7 @@ export function Navbar() {
         </AnimatePresence>
       </motion.nav>
 
-      {/* Overlay to close menu */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 z-40 md:hidden"
-          onClick={() => setIsOpen(false)}
-        />
-      )}
+      {/* Overlay REMOVED — it was intercepting mobile link clicks */}
     </>
   );
 }
