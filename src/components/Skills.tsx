@@ -15,6 +15,7 @@ import {
 } from "react-icons/si";
 
 const skills = [
+  { name: "Python", icon: SiPython, color: "#3776AB" },
   { name: "React", icon: SiReact, color: "#61DAFB" },
   { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
   { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
@@ -26,29 +27,28 @@ const skills = [
   { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
   { name: "Git", icon: SiGit, color: "#F05032" },
   { name: "Docker", icon: SiDocker, color: "#2496ED" },
-  { name: "Python", icon: SiPython, color: "#3776AB" },
 ];
 
 export function Skills() {
   return (
-    <section id="skills" className="py-20 relative">
+    <section id="skills" className="py-16 md:py-20 relative">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 font-mono">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 font-mono">
             <span className="text-[#00f3ff]">{"<"}</span>
             <span className="text-white">TECH_STACK</span>
             <span className="text-[#00f3ff]">{" />"}</span>
           </h2>
-          <p className="text-gray-400 text-lg">Technologies I work with</p>
+          <p className="text-gray-400 text-base md:text-lg">Technologies I work with</p>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto">
           {skills.map((skill, index) => (
             <motion.div
               key={skill.name}
@@ -56,7 +56,7 @@ export function Skills() {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{
                 duration: 0.5,
-                delay: index * 0.1,
+                delay: index * 0.07,
                 type: "spring",
                 stiffness: 100,
               }}
@@ -68,16 +68,17 @@ export function Skills() {
               }}
               className="group relative"
             >
-              <div className="border-2 border-gray-700 bg-black/30 backdrop-blur-sm rounded-lg p-6 flex flex-col items-center gap-3 hover:border-[#00f3ff] transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(0,243,255,0.5)]">
+              <div className="border-2 border-gray-700 bg-black/30 backdrop-blur-sm rounded-lg p-4 md:p-6 flex flex-col items-center gap-2 md:gap-3 hover:border-[#00f3ff] transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(0,243,255,0.5)] min-h-[100px] md:min-h-[120px] justify-center">
                 <skill.icon
-                  size={48}
-                  className="transition-all duration-300"
+                  size={36}
+                  className="transition-all duration-300 md:text-[48px]"
                   style={{
                     color: skill.color,
                     filter: "drop-shadow(0 0 8px currentColor)",
+                    fontSize: "clamp(32px, 5vw, 48px)",
                   }}
                 />
-                <span className="text-white font-mono text-sm group-hover:text-[#00f3ff] transition-colors">
+                <span className="text-white font-mono text-xs md:text-sm group-hover:text-[#00f3ff] transition-colors text-center leading-tight">
                   {skill.name}
                 </span>
               </div>
@@ -94,9 +95,9 @@ export function Skills() {
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
           viewport={{ once: true }}
-          className="mt-12 text-center"
+          className="mt-10 md:mt-12 text-center px-4"
         >
-          <p className="text-gray-400 font-mono text-sm">
+          <p className="text-gray-400 font-mono text-xs md:text-sm leading-relaxed">
             {">"} Also experienced with: REST APIs, GraphQL, CI/CD, AWS,
             Responsive Design, and more...
           </p>

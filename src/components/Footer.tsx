@@ -5,13 +5,15 @@ export function Footer() {
     <footer className="border-t border-gray-800 py-12 relative">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center gap-6">
+
           {/* Social Links */}
-          <div className="flex gap-6">
+          <div className="flex gap-4 md:gap-6">
             <a
               href="https://github.com/bismaysarangi"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-[#00f3ff] transition-colors"
+              aria-label="GitHub"
+              className="w-10 h-10 md:w-auto md:h-auto flex items-center justify-center rounded-lg md:rounded-none border border-gray-800 md:border-0 text-gray-400 hover:text-[#00f3ff] active:scale-95 md:active:scale-100 transition-colors touch-manipulation"
             >
               <Github size={24} />
             </a>
@@ -19,7 +21,8 @@ export function Footer() {
               href="https://www.linkedin.com/in/bismay-sarangi-0804aa263/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-[#00f3ff] transition-colors"
+              aria-label="LinkedIn"
+              className="w-10 h-10 md:w-auto md:h-auto flex items-center justify-center rounded-lg md:rounded-none border border-gray-800 md:border-0 text-gray-400 hover:text-[#00f3ff] active:scale-95 md:active:scale-100 transition-colors touch-manipulation"
             >
               <Linkedin size={24} />
             </a>
@@ -27,13 +30,15 @@ export function Footer() {
               href="https://x.com/bismay_sarangi"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-[#00f3ff] transition-colors"
+              aria-label="Twitter"
+              className="w-10 h-10 md:w-auto md:h-auto flex items-center justify-center rounded-lg md:rounded-none border border-gray-800 md:border-0 text-gray-400 hover:text-[#00f3ff] active:scale-95 md:active:scale-100 transition-colors touch-manipulation"
             >
               <Twitter size={24} />
             </a>
             <a
               href="mailto:bismaysarangi@gmail.com"
-              className="text-gray-400 hover:text-[#00f3ff] transition-colors"
+              aria-label="Email"
+              className="w-10 h-10 md:w-auto md:h-auto flex items-center justify-center rounded-lg md:rounded-none border border-gray-800 md:border-0 text-gray-400 hover:text-[#00f3ff] active:scale-95 md:active:scale-100 transition-colors touch-manipulation"
             >
               <Mail size={24} />
             </a>
@@ -41,10 +46,10 @@ export function Footer() {
 
           {/* Copyright */}
           <div className="text-center">
-            <p className="text-gray-400 font-mono text-sm flex items-center gap-2">
-              © {new Date().getFullYear()} Bismay Sarangi. Built with
-              <Heart size={16} className="text-[#ff006e] animate-pulse" />
-              using React + TypeScript + Tailwind CSS
+            <p className="text-gray-400 font-mono text-xs md:text-sm flex flex-wrap items-center justify-center gap-x-2 gap-y-1 leading-relaxed">
+              <span>© {new Date().getFullYear()} Bismay Sarangi. Built with</span>
+              <Heart size={16} className="text-[#ff006e] animate-pulse shrink-0" />
+              <span>using React + TypeScript + Tailwind CSS</span>
             </p>
           </div>
 
@@ -52,6 +57,7 @@ export function Footer() {
           <div className="font-mono text-xs text-gray-400">
             {">"} console.log("Thanks for visiting!")
           </div>
+
         </div>
       </div>
     </footer>

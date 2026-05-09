@@ -1,185 +1,211 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Mail, Send, CheckCircle } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Github, Linkedin, Twitter, Mail, Copy, CheckCheck, ExternalLink } from "lucide-react";
+
+const EMAIL = "bismaysarangi@gmail.com";
+
+const socials = [
+  {
+    name: "GitHub",
+    handle: "@bismaysarangi",
+    href: "https://github.com/bismaysarangi",
+    icon: Github,
+    color: "#ffffff",
+    glow: "rgba(255,255,255,0.3)",
+    border: "border-gray-600 hover:border-white",
+    label: "View my code",
+  },
+  {
+    name: "LinkedIn",
+    handle: "bismay-sarangi",
+    href: "https://www.linkedin.com/in/bismay-sarangi-0804aa263/",
+    icon: Linkedin,
+    color: "#0A66C2",
+    glow: "rgba(10,102,194,0.5)",
+    border: "border-gray-600 hover:border-[#0A66C2]",
+    label: "Connect with me",
+  },
+  {
+    name: "Twitter / X",
+    handle: "@bismay_sarangi",
+    href: "https://x.com/bismay_sarangi",
+    icon: Twitter,
+    color: "#1D9BF0",
+    glow: "rgba(29,155,240,0.5)",
+    border: "border-gray-600 hover:border-[#1D9BF0]",
+    label: "Follow me",
+  },
+];
 
 export function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
-    "idle",
-  );
+  const [copied, setCopied] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus("sending");
-
-    // Simulate email sending (replace with actual email service integration)
-    // You can use EmailJS, SendGrid, or your own backend API
-    setTimeout(() => {
-      setStatus("sent");
-      setFormData({ name: "", email: "", message: "" });
-      setTimeout(() => setStatus("idle"), 3000);
-    }, 1500);
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    } catch {
+      // Fallback for older browsers
+      const el = document.createElement("textarea");
+      el.value = EMAIL;
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand("copy");
+      document.body.removeChild(el);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    }
   };
 
   return (
-    <section id="contact" className="py-20 relative">
+    <section id="contact" className="py-16 md:py-20 relative">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 font-mono">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 font-mono">
             <span className="text-[#00ff41]">{"{"}</span>
             <span className="text-white">GET_IN_TOUCH</span>
             <span className="text-[#00ff41]">{"}"}</span>
           </h2>
-          <p className="text-gray-400 text-lg">
+          <p className="text-gray-400 text-base md:text-lg">
             Let's build something amazing together
           </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="max-w-2xl mx-auto"
-        >
-          <Card className="bg-black/30 backdrop-blur-sm border-2 border-gray-700 hover:border-[#00ff41] transition-all duration-300">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-2xl font-mono text-white">
-                <Mail className="text-[#00ff41]" />
-                Send me a message
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-mono text-gray-300 mb-2"
-                  >
-                    {">"} Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-black/50 border-2 border-gray-700 rounded-lg text-white font-mono focus:border-[#00ff41] focus:outline-none transition-colors"
-                    placeholder="John Doe"
-                  />
-                </div>
+        <div className="max-w-2xl mx-auto space-y-4 md:space-y-6">
 
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-mono text-gray-300 mb-2"
-                  >
-                    {">"} Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-black/50 border-2 border-gray-700 rounded-lg text-white font-mono focus:border-[#00ff41] focus:outline-none transition-colors"
-                    placeholder="john@example.com"
-                  />
+          {/* Email card — primary CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
+            <Card className="bg-black/40 backdrop-blur-sm border-2 border-[#00ff41]/50 hover:border-[#00ff41] transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,65,0.25)]">
+              <CardContent className="p-4 md:p-6">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                  <div className="flex items-center gap-3 flex-1 min-w-0">
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-[#00ff41]/10 border border-[#00ff41]/30 flex items-center justify-center shrink-0">
+                      <Mail size={20} className="text-[#00ff41]" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-gray-400 font-mono text-xs mb-0.5">{">"} Email me at</p>
+                      <a
+                        href={`mailto:${EMAIL}`}
+                        className="text-[#00f3ff] font-mono text-sm md:text-base hover:text-[#00ff41] transition-colors truncate block"
+                      >
+                        {EMAIL}
+                      </a>
+                    </div>
+                  </div>
+                  <div className="flex gap-2 shrink-0">
+                    <a
+                      href={`mailto:${EMAIL}`}
+                      className="flex items-center gap-2 px-3 py-2 md:px-4 md:py-2.5 rounded-lg bg-transparent border-2 border-[#00ff41] text-[#00ff41] hover:bg-[#00ff41] hover:text-black transition-all duration-300 font-mono text-xs md:text-sm shadow-[0_0_10px_rgba(0,255,65,0.3)] hover:shadow-[0_0_20px_rgba(0,255,65,0.6)] whitespace-nowrap"
+                    >
+                      <ExternalLink size={14} />
+                      <span className="hidden sm:inline">Open Mail</span>
+                      <span className="sm:hidden">Mail</span>
+                    </a>
+                    <button
+                      onClick={handleCopyEmail}
+                      className="flex items-center gap-2 px-3 py-2 md:px-4 md:py-2.5 rounded-lg bg-transparent border-2 border-gray-600 text-gray-300 hover:border-[#00ff41] hover:text-[#00ff41] transition-all duration-300 font-mono text-xs md:text-sm whitespace-nowrap"
+                    >
+                      {copied ? (
+                        <>
+                          <CheckCheck size={14} className="text-[#00ff41]" />
+                          <span>Copied!</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy size={14} />
+                          <span>Copy</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
                 </div>
+              </CardContent>
+            </Card>
+          </motion.div>
 
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-mono text-gray-300 mb-2"
-                  >
-                    {">"} Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={6}
-                    className="w-full px-4 py-3 bg-black/50 border-2 border-gray-700 rounded-lg text-white font-mono focus:border-[#00ff41] focus:outline-none transition-colors resize-none"
-                    placeholder="Tell me about your project..."
-                  />
-                </div>
-
-                <Button
-                  type="submit"
-                  size="lg"
-                  disabled={status === "sending" || status === "sent"}
-                  className="w-full bg-transparent border-2 border-[#00ff41] text-[#00ff41] hover:bg-[#00ff41] hover:text-black transition-all duration-300 shadow-[0_0_10px_rgba(0,255,65,0.5)] hover:shadow-[0_0_20px_rgba(0,255,65,0.8)]"
+          {/* Social links */}
+          {socials.map((social, index) => (
+            <motion.div
+              key={social.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.15 + index * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <a
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block group"
+              >
+                <Card
+                  className={`bg-black/30 backdrop-blur-sm border-2 ${social.border} transition-all duration-300`}
+                  style={{
+                    ["--glow" as string]: social.glow,
+                  }}
                 >
-                  {status === "idle" && (
-                    <>
-                      <Send size={20} className="mr-2" />
-                      Send Message
-                    </>
-                  )}
-                  {status === "sending" && "Sending..."}
-                  {status === "sent" && (
-                    <>
-                      <CheckCircle size={20} className="mr-2" />
-                      Message Sent!
-                    </>
-                  )}
-                  {status === "error" && "Error - Try Again"}
-                </Button>
-              </form>
+                  <CardContent className="p-4 md:p-5">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3 md:gap-4">
+                        <div
+                          className="w-10 h-10 md:w-12 md:h-12 rounded-lg flex items-center justify-center shrink-0 transition-all duration-300"
+                          style={{
+                            background: `${social.color}15`,
+                            border: `1px solid ${social.color}40`,
+                          }}
+                        >
+                          <social.icon
+                            size={20}
+                            style={{ color: social.color }}
+                          />
+                        </div>
+                        <div>
+                          <p className="text-white font-mono text-sm md:text-base font-semibold group-hover:transition-colors">
+                            {social.name}
+                          </p>
+                          <p className="text-gray-500 font-mono text-xs md:text-sm">
+                            {social.handle}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2 text-gray-500 group-hover:text-gray-300 transition-colors">
+                        <span className="font-mono text-xs hidden sm:block">{social.label}</span>
+                        <ExternalLink size={16} />
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </a>
+            </motion.div>
+          ))}
 
-              {status === "sent" && (
-                <motion.p
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="mt-4 text-center text-[#00ff41] font-mono text-sm"
-                >
-                  ✓ Message sent successfully! I'll get back to you soon.
-                </motion.p>
-              )}
-            </CardContent>
-          </Card>
-
+          {/* Terminal footer note */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
             viewport={{ once: true }}
-            className="mt-8 text-center text-gray-400 font-mono text-sm"
+            className="text-center pt-4"
           >
-            <p>Or reach out directly at:</p>
-            <a
-              href="mailto:bismaysarangi@gmail.com"
-              className="text-[#00f3ff] hover:text-[#00ff41] transition-colors"
-            >
-              bismaysarangi@gmail.com
-            </a>
+            <p className="text-gray-500 font-mono text-xs">
+              {">"} I typically respond within{" "}
+              <span className="text-[#00ff41]">24–48 hours</span>
+            </p>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
