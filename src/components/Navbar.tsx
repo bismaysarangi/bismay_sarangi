@@ -31,10 +31,10 @@ export function Navbar() {
   ];
 
   const handleNavClick = (href: string) => {
-    setIsOpen(false);
-    const id = href.replace("#", "");
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+  const id = href.replace("#", "");
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior:         "smooth" });
+  setTimeout(() => setIsOpen(false), 10);
   };
 
   return (
