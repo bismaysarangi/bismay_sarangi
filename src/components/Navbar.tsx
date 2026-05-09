@@ -34,8 +34,11 @@ export function Navbar() {
     const id = href.replace("#", "");
     setTimeout(() => {
       const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: "smooth" });
-    }, 300); // wait for menu close animation to finish
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.scrollY - 56;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
+    }, 350);
   };
 
   return (
@@ -117,8 +120,6 @@ export function Navbar() {
           )}
         </AnimatePresence>
       </motion.nav>
-
-      {/* Overlay REMOVED — it was intercepting mobile link clicks */}
     </>
   );
 }
