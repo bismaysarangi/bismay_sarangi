@@ -7,7 +7,11 @@ import { Footer } from "./components/Footer";
 
 function App() {
   return (
-    <div className="min-h-screen text-[#00ff41]">
+    <div className="min-h-screen retro-flicker">
+      {/* CSS-only retro overlays */}
+      <div className="retro-scanlines" />
+      <div className="retro-grain" />
+
       <Navbar />
 
       <main id="home">

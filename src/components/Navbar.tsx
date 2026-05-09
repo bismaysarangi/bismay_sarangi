@@ -43,9 +43,9 @@ export function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled || isOpen
-            ? "bg-black/90 backdrop-blur-lg border-b border-[#00f3ff]/30"
+            ? "bg-[#0f0f0f]/95 backdrop-blur-lg border-b border-[#2a2a3e]"
             : "bg-transparent"
         }`}
       >
@@ -57,8 +57,8 @@ export function Navbar() {
               onClick={(e) => { e.preventDefault(); handleNavClick("#home"); }}
               className="flex items-center gap-2 group"
             >
-              <div className="w-9 h-9 md:w-10 md:h-10 border-2 border-[#00f3ff] bg-black rounded-lg flex items-center justify-center group-hover:border-[#ff006e] transition-colors">
-                <span className="text-[#00f3ff] font-mono font-bold text-sm group-hover:text-[#ff006e] transition-colors">
+              <div className="w-9 h-9 md:w-10 md:h-10 border border-[#2a2a3e] bg-[#0f0f0f] rounded-lg flex items-center justify-center group-hover:border-[#f0c674] transition-all duration-300 group-hover:shadow-[0_0_12px_rgba(240,198,116,0.15)]">
+                <span className="text-[#f0c674] font-mono font-bold text-sm">
                   BS
                 </span>
               </div>
@@ -71,7 +71,7 @@ export function Navbar() {
                   key={item.name}
                   href={item.href}
                   onClick={(e) => { e.preventDefault(); handleNavClick(item.href); }}
-                  className="text-gray-300 hover:text-[#00f3ff] transition-colors font-mono text-sm"
+                  className="nav-link-underline text-[#c8c8b4]/70 hover:text-[#f0c674] transition-colors duration-300 font-mono text-sm tracking-wide"
                 >
                   {item.name}
                 </a>
@@ -81,7 +81,7 @@ export function Navbar() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden text-gray-300 hover:text-[#00f3ff] transition-colors p-2 -mr-2 touch-manipulation"
+              className="md:hidden text-[#c8c8b4] hover:text-[#f0c674] transition-colors p-2 -mr-2 touch-manipulation"
               aria-label="Toggle menu"
             >
               {isOpen ? <X size={22} /> : <Menu size={22} />}
@@ -97,7 +97,7 @@ export function Navbar() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden border-t border-[#00f3ff]/20 overflow-hidden"
+              className="md:hidden border-t border-[#2a2a3e] overflow-hidden bg-[#0f0f0f]/95"
             >
               <div className="px-4 py-3 space-y-1">
                 {navItems.map((item) => (
@@ -105,9 +105,9 @@ export function Navbar() {
                     key={item.name}
                     href={item.href}
                     onClick={(e) => { e.preventDefault(); handleNavClick(item.href); }}
-                    className="flex items-center gap-2 py-3 text-gray-300 hover:text-[#00f3ff] active:text-[#00f3ff] transition-colors font-mono text-sm border-b border-gray-800/50 last:border-0"
+                    className="flex items-center gap-3 py-3 text-[#c8c8b4] hover:text-[#f0c674] active:text-[#f0c674] transition-colors font-mono text-sm border-b border-[#2a2a3e]/50 last:border-0"
                   >
-                    <span className="text-[#00ff41] text-xs">{">"}</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#f0c674]/40" />
                     {item.name}
                   </a>
                 ))}

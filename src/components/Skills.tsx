@@ -56,11 +56,11 @@ export function Skills() {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{
                 duration: 0.5,
-                delay: index * 0.07,
+                delay: (index % 2) * 0.1,
                 type: "spring",
                 stiffness: 100,
               }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.3 }}
               whileHover={{
                 scale: 1.1,
                 rotate: [0, -5, 5, -5, 0],
