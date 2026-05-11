@@ -12,45 +12,35 @@ import { ExternalLink, Github } from "lucide-react";
 const projects = [
   {
     title: "Resume Parser & Manager",
-    description: "A sophisticated tool for parsing and managing resumes with advanced text extraction and analysis capabilities.",
-    tech: ["JavaScript", "Node.js", "Express", "MongoDB"],
+    description:
+      "A sophisticated tool for parsing and managing resumes with advanced text extraction and analysis capabilities.",
+    tech: ["React", "Python", "FastAPI", "MongoDB"],
     github: "https://github.com/bismaysarangi/resume-parser-and-manager",
-    demo: null,
+    live: "https://resume-parser-and-manager.vercel.app/",
   },
   {
     title: "InsightXL",
-    description: "Excel data analysis and visualization tool with powerful insights generation and interactive dashboards.",
-    tech: ["JavaScript", "React", "Chart.js"],
+    description:
+      "Excel data analysis and visualization tool with powerful insights generation and interactive dashboards.",
+    tech: ["JavaScript", "React", "Chart.js", "Node.js"],
     github: "https://github.com/bismaysarangi/insightXL",
-    demo: null,
+    live: "https://insightxl.onrender.com/",
   },
   {
     title: "eKYC Consent Vault",
-    description: "Secure digital vault for managing eKYC documents and consent with blockchain-based verification.",
-    tech: ["TypeScript", "React", "Node.js", "Blockchain"],
+    description:
+      "Secure digital vault for managing eKYC documents and consent with blockchain-based verification.",
+    tech: ["TypeScript", "Next.js", "Tailwind CSS", "Blockchain"],
     github: "https://github.com/bismaysarangi/ekyc-consent-vault",
-    demo: null,
+    live: "https://ekyc-consent-vault.vercel.app/",
   },
   {
     title: "Inkly",
-    description: "Creative blogging platform with rich text editing, markdown support, and social features.",
-    tech: ["JavaScript", "React", "Firebase", "Tailwind CSS"],
+    description:
+      "Creative blogging platform with rich text editing, markdown support, and social features.",
+    tech: ["JavaScript", "React", "Cloudinary", "MongoDB"],
     github: "https://github.com/bismaysarangi/inkly",
-    demo: null,
-  },
-  {
-    title: "GraphiQue",
-    description: "Interactive graph visualization library with advanced algorithms and customizable rendering.",
-    tech: ["JavaScript", "D3.js", "Canvas API"],
-    github: "https://github.com/bismaysarangi/graphiQue",
-    demo: null,
-  },
-  {
-    title: "Synchronize Web",
-    description: "Real-time collaboration platform for synchronizing tasks and workflows across teams.",
-    tech: ["TypeScript", "React", "WebSocket", "Node.js"],
-    github: "https://github.com/bismaysarangi/synchronize-web",
-    demo: null,
+    live: "https://inkly-ashen.vercel.app/",
   },
 ];
 
@@ -71,10 +61,12 @@ export function Projects() {
             <span className="text-[#c8c8b4]"> PROJECTS </span>
             <span className="text-[#f0c674]">{"]"}</span>
           </h2>
-          <p className="text-[#c8c8b4]/50 text-base md:text-lg">Some things I've built</p>
+          <p className="text-[#c8c8b4]/50 text-base md:text-lg">
+            Some things I've built
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 max-w-7xl mx-auto">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
@@ -96,26 +88,45 @@ export function Projects() {
                 <CardContent>
                   <div className="flex flex-wrap gap-1.5 mb-4">
                     {project.tech.map((tech) => (
-                      <span key={tech} className="px-2 py-0.5 text-xs font-mono bg-[#f0c674]/8 text-[#f0c674]/80 border border-[#f0c674]/15 rounded-full">
+                      <span
+                        key={tech}
+                        className="px-2 py-0.5 text-xs font-mono bg-[#f0c674]/8 text-[#f0c674]/80 border border-[#f0c674]/15 rounded-full"
+                      >
                         {tech}
                       </span>
                     ))}
                   </div>
                   <div className="flex gap-3">
-                    <Button size="sm" asChild className="flex-1 bg-transparent border border-[#f0c674]/50 text-[#f0c674] hover:bg-[#f0c674] hover:text-[#0f0f0f] transition-all duration-300 text-xs md:text-sm py-2.5 font-mono">
-                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5">
+                    <Button
+                      size="sm"
+                      asChild
+                      className="flex-1 bg-transparent border border-[#f0c674]/50 text-[#f0c674] hover:bg-[#f0c674] hover:text-[#0f0f0f] transition-all duration-300 text-xs md:text-sm py-2.5 font-mono"
+                    >
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5"
+                      >
                         <Github size={14} />
                         Code
                       </a>
                     </Button>
-                    {project.demo && (
-                      <Button size="sm" asChild className="flex-1 bg-transparent border border-[#e06c75]/40 text-[#e06c75] hover:bg-[#e06c75] hover:text-white transition-all duration-300 text-xs md:text-sm py-2.5 font-mono">
-                        <a href={project.demo} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5">
-                          <ExternalLink size={14} />
-                          Demo
-                        </a>
-                      </Button>
-                    )}
+                    <Button
+                      size="sm"
+                      asChild
+                      className="flex-1 bg-transparent border border-[#61afef]/50 text-[#61afef] hover:bg-[#61afef] hover:text-white transition-all duration-300 text-xs md:text-sm py-2.5 font-mono"
+                    >
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5"
+                      >
+                        <ExternalLink size={14} />
+                        Live Link
+                      </a>
+                    </Button>
                   </div>
                 </CardContent>
               </Card>
